@@ -18,8 +18,13 @@ def create_person_list(people: list) -> list:
     for person in people:
         current_person = Person.people[person["name"]]
         if "wife" in person and person["wife"]:
-            current_person.wife = Person.people[person["wife"]]
+            wife_name = person["wife"]
+            if wife_name in Person.people:
+                current_person.wife = Person.people[wife_name]
+
         elif "husband" in person and person["husband"]:
-            current_person.husband = Person.people[person["husband"]]
+            husband_name = person["husband"]
+            if husband_name in Person.people:
+                current_person.husband = Person.people[husband_name]
 
     return persons
